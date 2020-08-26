@@ -1,0 +1,192 @@
+/*Fonts*/
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Light-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-LightItalic-webfont.woff') format('woff');
+  font-style: italic;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Bold-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+}
+
+body{
+  font-family:"Roboto";
+  font-weight:300;
+}
+
+em{
+  font-style:italic;
+}
+b{
+  font-style:bold;
+}
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/*HEADER STRUCTURE*/
+
+/*Header and logo*/
+header{
+  background-color: rgba(197, 137, 137, 0.75);
+  padding:10px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:space-between;
+}
+.logo img{
+  width:70%;
+}
+.logo{
+  height:30%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/*Navigation and menu*/
+nav{
+  display:flex;
+}
+
+.menu{
+  padding:10px;
+
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  
+  width:100%;
+}
+.menu .first{
+  padding-right:30px;
+}
+.menu .second{
+  padding-left:30px;
+}
+.second li:first-child{
+  padding-bottom:10px;
+}
+.second li:last-child{
+  padding-top:10px;
+}
+
+
+/*HEADER DECORATIONS*/
+
+.menu li{
+  list-style:none;
+}
+
+header a{
+  color:beige;
+  text-decoration:none;
+  font-size:20px;
+}
+header a:hover{
+  text-decoration:underline;
+}
+
+/*Dropdown decoration*/
+.dropdown{
+  position:relative;
+  z-index:2;
+  cursor:pointer;
+}
+.dropdown:hover .features-menu{
+  display:flex;
+  flex-direction:column;
+
+}
+.features-menu{
+  display:none;
+  flex-direction:column;
+
+  position:absolute;
+  top: -10px;
+  left: -10px;
+  z-index:1;
+  padding-top:40px;
+
+  list-style:none;
+  background-color:rgba(197, 137, 137);
+  border-radius:5px;
+
+}
+.features-menu > li{
+  list-style:none;
+  border-bottom:1px solid #FFF;
+
+  padding:0 10px 10px 10px;
+  margin:10px;
+  width:80px;
+}
+.features-menu li:last-of-type{
+  border-bottom:none;
+}
+.dropdown > span {
+  z-index: 2;
+  position: relative;
+  cursor: pointer;
+}
+
+/*Desktop*/
+@media only screen and (min-width:715px){
+  header{
+    justify-content:space-between;
+    align-items:space-around;
+    flex-direction:row;
+  }
+  .menu li{
+    display:inline-block;
+    padding-right:50px;
+  }
+  .menu li:last-child{
+    padding-right:0;
+  }
+  .logo{
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .logo img{
+    height:90px;
+  }
+  .second{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+  }
+  .first{
+    padding-right:50px;
+    display:flex;
+    align-items:center;
+  }
+  .menu{
+    justify-content:space-between
+  }
+  .second li:first-child{
+    padding-bottom:0;
+  }
+  .second li:last-child{
+    padding-top:0;
+  }
+}
