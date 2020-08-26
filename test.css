@@ -147,8 +147,54 @@ header a:hover{
   cursor: pointer;
 }
 
+/*CONTENT   STRUCTURE*/
+article{
+  display:flex;
+  width:100%;
+}
+.content{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+}
+/*CONTENT DECORATIONS*/
+h1{
+  color:rgba(0,0,0,.7);
+  border-bottom: 1px solid rgba(197, 137, 137, 0.75);
+  margin:50px;
+  text-align:center;
+  padding: 10px;
+  padding-top:50px;
+}
+h3{
+  text-align:center;
+  color:rgba(0,0,0,.7);
+  padding: 10px;
+}
+.cmd{
+  background-color:rgba(0,0,0,.4);
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+p{
+  color:rgba(0,0,0,.7);
+  font-size:18px;
+  margin-bottom:20px;
+  padding:0 10px 0 10px;
+}
+.content-link:link, .content-link:visited{
+  color:rgb(48, 117, 221);
+  font-size:18px;
+}
+.content-link:hover{
+  color:rgba(48, 117, 221, 0.7);
+}
+.content-link:link:active, .content-link:visited:active{
+  color:rgb(48, 117, 221);
+}
 /*Desktop*/
 @media only screen and (min-width:715px){
+  /*HEADER*/
   header{
     justify-content:space-between;
     align-items:space-around;
@@ -188,5 +234,13 @@ header a:hover{
   }
   .second li:last-child{
     padding-top:0;
+  }
+  /*CONTENT*/
+  article{
+    justify-content:center;
+  }
+  .content{
+    display:flex;
+    width:715px;
   }
 }
