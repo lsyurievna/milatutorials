@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troubleshooting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo"><img src="images/logo.svg"></div>
+    <ul class="menu">
+      <li class="dropdown"><span style="color:beige; font-style:italic; font-size:22px">Static ▾</span>
+        <ul class="features-menu">
+          <li><a href="static.html" target="_blank">Part I</a></li>
+          <li><a href="static-2.html" target="_blank">Part II</a></li>
+        </ul>
+      </li>
+      <li><a href="dynamic.html" target="_blank">Dynamic</a></li>
+      <li><a href="troubleshooting.html" target="_blank">Troubleshooting</a></li>
+    </ul>
+  </div>
+  
+  <div class="page">
+  <h1>Troubleshooting.</h1>
+    <h3>nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)</h3>
+          <p>1. First, we can check if something is using port 80.</p>
+          <p>Login as a root user.</p>
+          <p class="cmd">sudo su</p>
+          <p>You can always lift the user privelegies later by typing:</p>
+          <p class="cmd">exit</p>
+          <p>Now, let's check which programs are listening on port 80.</p>
+          <p class="cmd">sudo lsof -i :80</p>
+          <p>If there are any, kill them.</p>
+          <p class="cmd">sudo fuser -k 80/tcp</p>
+          <p>Note:there is a whole buch of other methods to check which ports are open
+            and what programs are using them. Visit 
+            <a class="content-link" target="_blank" href="https://www.cyberciti.biz/faq/how-to-check-open-ports-in-linux-using-the-cli/">this page</a>
+            for details.
+          </p>
+          <p>My personal favourite in listing all the ports:</p>
+          <p class="cmd">sudo netstat -tulpn | grep LIST</p>
+          <p>If your port is busy with the apache server as in my case, you can disable it by typing:</p>
+          <p class="cmd">sudo /etc/init.d/apache2 stop</p>
+
+          <p>2. There might be a conflict since [::]:80 is a ipv6 address. 
+          <p>>We can make nginx listen to only one of the ports by changing the confin file as shown:
+            <strong>listen [::]:80 ipv6only=on default_server;</strong>
+          </p>
+    
+
+    <h3>This site cannot be reached problem</h3>
+    
+          <p>1. First, check whether it is a server or a browser issue using this 
+            <a class="content-link"  target="_blank" href="https://downforeveryoneorjustme.com/">website.</a> 
+            If it is a browser problem, follow this 
+            <a class="content-link"  target="_blank" href="https://kinsta.com/blog/err_connection_refused/#:~:text=Clear%20your%20browser's%20cache.,Flush%20your%20DNS%20cache.">guide</a>
+            to debug it.
+          </p>
+          <p>2. If it is a server issue, however, try folloeing this guide 
+            <a class="content-link"  target="_blank" href="https://blog.serverdensity.com/troubleshoot-nginx/">here</a>. Generally you will have at least
+            on of these problems. </p>
+          <p>3. If you are still experiencing malfunctioning, check the firewall status.</p>
+          <p class="cmd">sudo ufw status</p>
+          <p>For a more detailed check:</p>
+          <p class="cmd">sudo ufw status verbose</p>
+          <p>You can try disabling your firewall with <strong>disable</strong>
+          command. Remember to later enable it back again with an <strong>enable</strong> command.</p>
+          <p class="cmd">sudo ufw enable/disable</p>
+    
+          <p>4. Check if maybe nginx config file has any problems in it.</p>
+          <p class="cmd">sudo nginx -t</p>
+    
+
+</div>
+</body>
+</html>

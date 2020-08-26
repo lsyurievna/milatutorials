@@ -8,17 +8,19 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('fonts/Roboto-Italic-webfont.woff') format('woff');
+  src: url('Roboto-LightItalic-webfont.tff') format('tff');
   font-style: italic;
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Roboto';
-  src: url('fonts/Roboto-Bold-webfont.woff') format('woff');
+  src: url('fonts/Roboto-Regular-webfont.woff') format('woff');
   font-style: normal;
   font-weight: 700;
 }
+
+
 
 body{
   font-family:"Roboto";
@@ -94,7 +96,7 @@ nav{
 .menu li{
   list-style:none;
 }
-
+/*LINKS*/
 header a{
   color:beige;
   text-decoration:none;
@@ -103,7 +105,25 @@ header a{
 header a:hover{
   text-decoration:underline;
 }
-
+footer a{
+  color:beige;
+  text-decoration:none;
+  font-size:20px;
+}
+footer a:hover{
+  text-decoration:underline;
+}
+article a:link, article a:visited{
+  color:rgb(48, 117, 221);
+  font-size:18px;
+  text-decoration:none;
+}
+article a:hover{
+  color:rgba(48, 117, 221, 0.7);
+}
+article a:link:active, .content-link:visited:active{
+  color:rgb(48, 117, 221);
+}
 /*Dropdown decoration*/
 .dropdown{
   position:relative;
@@ -151,6 +171,8 @@ header a:hover{
 article{
   display:flex;
   width:100%;
+  background-color:rgba(235, 228, 228, .3);
+  padding-bottom:50px;
 }
 .content{
   display:flex;
@@ -176,22 +198,13 @@ h3{
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
+
 p{
   color:rgba(0,0,0,.7);
   font-size:18px;
   margin-bottom:20px;
   padding:0 10px 0 10px;
   line-height: 1.5;
-}
-.content-link:link, .content-link:visited{
-  color:rgb(48, 117, 221);
-  font-size:18px;
-}
-.content-link:hover{
-  color:rgba(48, 117, 221, 0.7);
-}
-.content-link:link:active, .content-link:visited:active{
-  color:rgb(48, 117, 221);
 }
 
 /*FOOTER STRUCTURE*/
@@ -200,7 +213,6 @@ footer{
   display:flex;
   width:100%;
   padding:10px;
-  margin-top:50px;
 }
 footer p{
   margin-bottom:0;
@@ -208,6 +220,10 @@ footer p{
 /*FOOTER DECORATION*/
 address{
   font-style:normal;
+}
+footer p {
+  color:beige;
+  font-size:20px;
 }
 /*Desktop*/
 @media only screen and (min-width:715px){
@@ -222,6 +238,9 @@ address{
     padding-right:50px;
   }
   .menu li:last-child{
+    padding-right:0;
+  }
+  .dropdown li{
     padding-right:0;
   }
   .logo{
@@ -255,6 +274,7 @@ address{
   /*CONTENT*/
   article{
     justify-content:center;
+    padding-bottom:80px;
   }
   .content{
     display:flex;
@@ -264,7 +284,6 @@ address{
     padding-top:80px;
   }
   footer{
-    margin-top:80px;
     height:100px;
     align-items:center;
   }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Static | Part I</title>
-  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -15,8 +15,8 @@
         <div class="first">
         <li class="dropdown"><span style="color:beige; font-size:20px">Static ▾</span></a>
           <ul class="features-menu">
-            <li><a href="static.html">Part I</a></li>
-            <li><a href="static-2.html">Part II</a></li>
+            <li><a href="static1.html">Part I</a></li>
+            <li><a href="static2.html">Part II</a></li>
           </ul>
         </li>
         </div>
@@ -46,8 +46,11 @@
       </p>
       <p>4. Create a directory where you are going to store your code.</p>
       <p class="cmd">sudo mkdir  /var/www/files-dir</p>
-      <p>5. Now we should configure nginx to serve pages that are situated in our newly created folder, not the ones in 
-        the default folder.
+      <p>Create a test HTML file in this new directory.</p>
+      <p class="cmd">touch index.html</p>
+      <p>Open it a write somthing like <strong>Hello world!</strong>.</p>
+      <p class="cmd">sudo nano index.html</p>
+      <p>5. Now we should configure nginx to serve this test file insted the default greeting.
         Go to nginx sites-available folder, and make a copy of the default file. The reason for that
         is you never want to mess with the original default file (trust me).
       </p>
@@ -69,10 +72,11 @@
       <p>If problems occur, log them by typing the following.</p>
       <p class="cmd">sudo systemctl status nginx</p>
       <p>If you (miraculously) encountered no problems, you should see your html page on the web,
-         after you type your domain name in the search engine.
+         after you type your domain name in the search engine. You can go ahead now and
+          read <a href="static2">Part II</a> of this tutorial.
       <p>If problems did occur, then rejoice at the amazing opportunity to look for a solution on the web and become
       more knowledgeable about what you are doing. But first, make sure to check my list of recommendations on
-      the <a class="content-link" target="_blank" href="troubleshooting.html"> troubleshooting page</a>. It might just 
+      the <a target="_blank" href="troubleshooting.html"> troubleshooting page</a>. It might just 
       so happen that I have encountered and solved the problem you are struggling with.</p>
     </div>
   </article>
