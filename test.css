@@ -181,6 +181,7 @@ p{
   font-size:18px;
   margin-bottom:20px;
   padding:0 10px 0 10px;
+  line-height: 1.5;
 }
 .content-link:link, .content-link:visited{
   color:rgb(48, 117, 221);

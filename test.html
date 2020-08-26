@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Static | Part I</title>
   <link rel="stylesheet" href="test.css">
 </head>
 <body>
@@ -33,37 +33,47 @@
   <article>
     <div class="content">
       <h1>Setting up a static website with nginx on Ubuntu 20.</h1>
-      <p>1. Start by updating Ubuntu.</p>
+      <p>1. Login to your remote VM through your SSH key and update/upgrade Ubuntu.</p>
+      <p class="cmd">ssh -i keyname.key ubuntu@externalIPadress</p>
       <p class="cmd">sudo apt-get update</p>
       <p class="cmd">sudo apt-get upgrade</p>
       <p>2. Install nginx.</p>
       <p class="cmd">sudo apt-get install nginx</p>
       <p>3. Open the ports so that the user can 
         get response from the server.
-        Another way to put it: we are telling the firewall that it is 
-        OK to get http/https requests from the user (us) with a specific IP adress (your IP adress).
         In order to do this, go to your server and manage securuty rules (add an http and an https rule).
-        Now, you should be able to see nginx welcome page when your type your cloud's external IP adress in the search line.
+        After that, you should be able to see nginx welcome page when you type your cloud's external IP adress in your search engine.
       </p>
-      <p>4. Create a directory in which you are going to store your code.</p>
+      <p>4. Create a directory where you are going to store your code.</p>
       <p class="cmd">sudo mkdir  /var/www/files-dir</p>
-      <p>5. Now we should configure nginx to serve pages that are situated in our newly created folder.
-        Go to nginx sites-available folder, make a copy of the default file and, in the new copy change the root 
-        from <strong>/var/www/html</strong> to <strong>/var/www/files-dir</strong>.
+      <p>5. Now we should configure nginx to serve pages that are situated in our newly created folder, not the ones in 
+        the default folder.
+        Go to nginx sites-available folder, and make a copy of the default file. The reason for that
+        is you never want to mess with the original default file (trust me).
       </p>
       <p class="cmd">cd /etc/nginx/sites-available</p>
       <p class="cmd">sudo cp default mydefault</p>
-      <p>6. Make an external link of a newly created file to the <strong>/sites-enabed</strong> directory. Also, delete
-      an existing default file in the <strong>sites-enabled</strong> directory (do not confuse with <strong>sites-available</strong>.</p></li>
+      <p>In the new copied file, change the root 
+        from <strong>/var/www/html</strong> to <strong>/var/www/files-dir</strong>.</p>
+      <p>6. Now we are about to do something fancly. We need to make an external link of a newly created file 
+        to the <strong>/sites-enabed</strong> directory. </p>
       <p class="cmd">ln -s /etc/nginx/sites-available/mydefault /etc/nginx/sites-enabled/mydefault</p>
+      <p> 7.Next, delete an existing default file in the <strong>sites-enabled</strong> directory (do not confuse with <strong>sites-available</strong>.
+      If you do not do that, nginx will be confused and spit all the red 
+      warnings at you as if you hacked his core or something, because apparently two files in the 
+      <strong>sites-enabled</strong> repository are too many for him.
+      </p>
       <p class="cmd">sudo rm /etc/nginx/sites-enabled/default</p>
-      <p>7. Restart nginx.</p>
+      <p>8. Restart nginx.</p>
       <p class="cmd">sudo systemctl restart nginx</p>
-      <p>If problems occur, log them.</p>
+      <p>If problems occur, log them by typing the following.</p>
       <p class="cmd">sudo systemctl status nginx</p>
-      <p>You should see your html page now if you type your domain name in the browser.
-        of this tutorial on how to convert your site protocol to https.
-      On this page you can see <a class="content-link" target="_blank" href="troubleshooting.html"> troubleshooting</a> of some error I have encounterd.</p>
+      <p>If you (miraculously) encountered no problems, you should see your html page on the web,
+         after you type your domain name in the search engine.
+      <p>If problems did occur, then rejoice at the amazing opportunity to look for a solution on the web and become
+      more knowledgeable about what you are doing. But first, make sure to check my list of recommendations on
+      the <a class="content-link" target="_blank" href="troubleshooting.html"> troubleshooting page</a>. It might just 
+      so happen that I have encountered and solved the problem you are struggling with.</p>
     </div>
   </article>
 
