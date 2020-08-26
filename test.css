@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'Roboto';
-  src: url('fonts/Roboto-LightItalic-webfont.woff') format('woff');
+  src: url('fonts/Roboto-Italic-webfont.woff') format('woff');
   font-style: italic;
   font-weight: 300;
 }
@@ -192,6 +192,22 @@ p{
 .content-link:link:active, .content-link:visited:active{
   color:rgb(48, 117, 221);
 }
+
+/*FOOTER STRUCTURE*/
+footer{
+  background-color:rgba(197, 137, 137, 0.75);
+  display:flex;
+  width:100%;
+  padding:10px;
+  margin-top:50px;
+}
+footer p{
+  margin-bottom:0;
+}
+/*FOOTER DECORATION*/
+address{
+  font-style:normal;
+}
 /*Desktop*/
 @media only screen and (min-width:715px){
   /*HEADER*/
@@ -242,5 +258,13 @@ p{
   .content{
     display:flex;
     width:715px;
+  }
+  h1{
+    padding-top:80px;
+  }
+  footer{
+    margin-top:80px;
+    height:100px;
+    align-items:center;
   }
 }
