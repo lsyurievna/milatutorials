@@ -65,6 +65,13 @@ header{
   align-items:space-between;
 }
 .logo img{
+  width:100%;
+  border:1px solid yellow;
+}
+.logo-link{
+  border:1px solid red;
+  display:flex;
+  justify-content:center;
   width:70%;
 }
 .logo{
@@ -108,12 +115,13 @@ nav{
   list-style:none;
 }
 /*LINKS*/
-header a{
+
+.menu a{
   color:beige;
   text-decoration:none;
   font-size:20px;
 }
-header a:hover{
+.menu a:hover{
   text-decoration:underline;
 }
 footer a{
@@ -264,7 +272,7 @@ footer p {
     justify-content:center;
     align-items:center;
   }
-  .logo img{
+  .logo-link{
     height:90px;
   }
   .second{
