@@ -33,10 +33,9 @@
   <article>
     <div class="content">
       <h1>Setting up a static website with nginx on Ubuntu 20. Part two.</h1>
-  <p> <em>This part is all about security 
-    considerations. Here, you will learn how to convert your website's protocol
-    from http to https. In order to do that, you will download some security certificates
-    using a program called <strong>certbot</strong>. You will also get a 
+  <p> <em>This part is all about security. Here, you will learn how to convert your website's protocol
+    from http to https. In order to do that, we will download some security certificates
+    using a program called <strong>certbot</strong>. We will also get a 
     half-decent domain name for your website since it is something <strong>certbot</strong> needs
     for certificate installation.</em>
   </p>
@@ -45,7 +44,7 @@
   </p>
   <p class ="cmd">sudo add-apt-repository ppa:certbot/certbot</p>
   <p class="cmd">sudo apt-get install python-certbot-nginx</p>
-  <p>2. Next, we need a domain name.To get a free one from compute canada, type:</p>
+  <p>2. Next, let's get a domain name for your website.To get a free one from Compute Canada, type:</p>
   <p class="cmd">host *your server's public IP address*</p>
   <p>3. Equipped with <strong>certbot</strong> and the domain name,
     we are ready to get security certificates for our website.</p>
@@ -53,6 +52,9 @@
   <p>Follow the installation instructions. Choose option 2 when 
     asked about redirection, this way, all http pages will automatically
     be converted to https.
+    After you finish, you will see a whole bunch of new lines in the nginx
+    config file. Go have a look, we have to make some adjustments to it
+    in the next step anyway.
   </p>
   <p>4. To automatically convert out hhtp pages to hhtps, add this block to the 
     nginx configuration file:
