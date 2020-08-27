@@ -86,7 +86,7 @@
   <p class="cmd mysql">CREATE USER 'lustra'@'localhost' IDENTIFIED BY 'password';</p>
   <p class="cmd mysql">GRANT ALL PRIVILEGES ON *.* TO 'lustra'@'localhost' WITH GRANT OPTION;</p>
   <p class="cmd mysql">flush privileges;</p>
-  <p>Now exit from the user mode by typing <b>\q</b>. Login then to mysql
+  <p>Now exit from the user mode by typing <strong>\q</strong>. Login then to mysql
   again, this time using your newly created username and password.</p>
   <p class="cmd mysql">mysql -u lustra -p</p>
  
@@ -109,7 +109,7 @@
   <p>The installation will now finish. For the Nginx web server to find and serve the phpMyAdmin files correctly, we’ll need to create a symbolic link from the installation files to Nginx’s document root directory:</p>
   <p class="cmd">sudo ln -s /usr/share/phpmyadmin /var/www/lustra/phpmyadmin</p>
   <p>We can now access our database through a gui. Just type 
-    <b>https://206-12-93-221.cloud.computecanada.ca/phpmyadmin</b> in your web browser.
+    <strong>https://206-12-93-221.cloud.computecanada.ca/phpmyadmin</strong> in your web browser.
   </p>
   <p>Now, there is a whole bunch of security stuff you can add to this, and you can 
     go ahead and follow <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-18-04-server">this guide here</a> for that. I will just go ahead and create a basic 

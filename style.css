@@ -209,6 +209,9 @@ h3{
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
+.mysql{
+  background-color:rgba(48, 117, 221, 0.4);
+}
 
 p{
   color:rgba(0,0,0,.7);
