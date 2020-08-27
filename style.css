@@ -66,10 +66,8 @@ header{
 }
 .logo img{
   width:100%;
-  border:1px solid yellow;
 }
 .logo-link{
-  border:1px solid red;
   display:flex;
   justify-content:center;
   width:70%;
@@ -227,7 +225,7 @@ p{
   font-size:18px;
   margin-bottom:20px;
   padding:0 10px 0 10px;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 /*FOOTER STRUCTURE*/
@@ -247,6 +245,14 @@ address{
 footer p {
   color:beige;
   font-size:20px;
+}
+
+/*HOME PAGE*/
+.home-ul{
+  list-style:none;
+}
+.home-ul p{
+  border-bottom:1px solid rgba(197, 137, 137, 0.75);
 }
 /*Desktop*/
 @media only screen and (min-width:715px){
