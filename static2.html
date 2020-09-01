@@ -45,15 +45,15 @@
   <p class ="cmd">sudo add-apt-repository ppa:certbot/certbot</p>
   <p class="cmd">sudo apt-get install python-certbot-nginx</p>
   <p>2. Next, let's get a domain name for your website.To get a free one from Compute Canada, type:</p>
-  <p class="cmd">host *your server's public IP address*</p>
+  <p class="cmd">host server_public_IP_address</p>
   <p>3. Equipped with <strong>certbot</strong> and the domain name,
-    we are ready to get security certificates for our website.</p>
-  <p class="cmd">sudo certbot --nginx -d *your domain name*</p>
+    you are ready to get security certificates for your website.</p>
+  <p class="cmd">sudo certbot --nginx -d your_domain_name</p>
   <p>Follow the installation instructions. Choose option 2 when 
     asked about redirection, this way, all http pages will automatically
     be converted to https.
     After you finish, you will see a whole bunch of new lines in the nginx
-    config file. Go have a look, we have to make some adjustments to it
+    config file. Go have a look, you have to make some adjustments to it
     in the next step anyway.
   </p>
   <p>4. To automatically convert out hhtp pages to hhtps, add this block to the 
@@ -63,11 +63,11 @@
     server{<br>
       listen 80;<br>
       server_name: externalIPadress;<br>
-      return 301 https://http://yourdomainame;<br>
+      return 301 https://http://yourdomainname;<br>
     }
   </p>
   <p>Now, when you type your domain name in the search engine, you will automatically get
-    an https page. Cograts! You now know how to serve a static webpage. Next,
+    an https page. Congrats! You now know how to serve a static webpage. Next,
     we will learn about <a href="dynamic.html">serving dynamic webpages</a>.
   </p>
     </div>

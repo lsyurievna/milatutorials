@@ -34,58 +34,60 @@
     <div class="content">
       <h1>Setting up a dynamic website with nginx on Ubuntu 20.</h1>
   <p><em>Try to make a local link from your html index page to any php page. Doesn't work, right?
-    It is because our server cannot process files with php extension 
+    It is because your server cannot process files with php extension 
     by itself. It needs help from what is called SAPI or Server Application
-    Programming Interface. There are many SAPIs for php but we will use <strong>fpm</strong> aka fast process manager 
+    Programming Interface. There are many SAPIs for php but you will use <strong>fpm</strong> aka fast process manager 
     today. FPM is not going to be a part
-    of our server and it is not a separate server itself. Think of it as a very simple and effective helper that controls 
+    of your server and it is not a separate server itself. Think of it as a very simple and effective helper that controls 
     the number of php-processes you run, their upgrade and restart frequencies. It also deals with possible memory losses
-    that php is so "bad-known" for. Another distinctive difference between <strong>fpm</strong> and a server is that
+    that php is so infamous for. Another distinctive difference between <strong>fpm</strong> and a server is that
     <strong>fpm</strong> does not use http protocols; rather, it uses its own <strong>fastcgi</strong> protocol.
-    Anyway, without further adew, let's just go ahead and downoad <strong>php-fpm</strong> and configure our nginx 
-    so that it can serve our php content!
+    Anyway, without further adieu let's go ahead and downoad <strong>php-fpm</strong> and configure our nginx 
+    so that it can serve you php content!
   </em></p>
   <h3>Installing php-fpm and configuring it.</h3>
-  <p>1. First, let's go to our nginx configuration file and make some changes as illustrated 
+  <p>1. First, let's go to your nginx configuration file and make some changes as illustrated 
     in this <a href="https://websiteforstudents.com/setup-nginx-web-servers-with-php-support-on-ubuntu-servers/">link</a>.
-    (we basically just tell NGINX to proxy requests to PHP FPM via the FCGI protocol).</p>
+    (we basically just tell nginx to proxy requests to PHP FPM via the FCGI protocol).</p>
   <p class="cmd">sudo nano /etc/nginx/sites-available/mydefault</p>
   <p>2. Install <strong>php-fpm</strong>.</p>
   <p class="cmd">apt-get install php7.0-fpm</p>
-  <p>I would also reccomend to go ahead and install the following modules, we will use them later on: php7.0-curl php7.0-cli php-memcache php-memcached php7.0-mysql php7.0-pgsql php7.0-gd php7.0-imagick php7.0-intl php7.0-mcrypt</p>
+  <p>I would also reccomend to install the following modules, as you will need them later on: php7.0-curl php7.0-cli php-memcache php-memcached php7.0-mysql php7.0-pgsql php7.0-gd php7.0-imagick php7.0-intl php7.0-mcrypt</p>
   <p>Check if it is working correctly.</p>
   <p class="cmd">ps aux | grep php-fpm</p>
   <p>3. Restart nginx and fpm.</p>
   <p class="cmd">sudo service  restart nginx</p>
   <p class="cmd">sudo service  restart php7.4-fpm</p>
-  <p>In case you are unable to restart any of the services, check the logs 
+  <p>In case you are unable to restart any of the services, check the logs.
   </p>
   <p class="cmd">sudo systemctl status nginx or php7.4-fpm</p>
   <p>3.This is it, you are good to go. Create a simple php file in your root
-    folder and test it now.
+    folder and test if everything is working correctly by typing your 
+    domain name in the search engine. 
   </p>
+  <!--/change inti mIla ajaakak-->
   <h3>MySQL</h3>
-  <p><em>Fine, we have our php content up and running but it really is nothing 
+  <p><em>Once you have done this, but it really is nothing 
     without MySQL. So let us connect to our database through the VM.</em>
   </p>
-  <p>1. Follow this guide here to install MySQL "server" on your virtual machine:
+  <p>1. Follow the guide in the link to install MySQL "server" on your virtual machine:
     <a target="_blank" href="https://www.howtoforge.com/tutorial/how-to-install-nginx-with-php-and-mysql-lemp-on-ubuntu-20-04/#step-install-mysql">install mysql</a>.
   </p>
-  <p>2. You should now setup a password for the database and change the user name if you wish.</p>
+  <p>2. You now need to setup a password for the database. You can also change the user name if you wish.</p>
   <p class="cmd">sudo mysql_secure_installation</p>
   <p>When you are finished, you can log into your mysql.</p>
   <p class="cmd">sudo mysql</p>
-  <p>3. Login as a database user and  grant all preveleges to a new user.</p>
+  <p>3. Login as a database user and  grant all preveleges to the new user.</p>
   <p class="cmd">mysql -u root -p</p>
   <p class="cmd mysql">CREATE USER 'lustra'@'localhost' IDENTIFIED BY 'password';</p>
   <p class="cmd mysql">GRANT ALL PRIVILEGES ON *.* TO 'lustra'@'localhost' WITH GRANT OPTION;</p>
   <p class="cmd mysql">flush privileges;</p>
-  <p>4. Now exit from the user mode by typing <strong>\q</strong>. Login then to mysql
+  <p>4. Now exit from the user mode by typing <strong>\q</strong>. After that, login to mysql
   again, this time using your newly created username and password.</p>
   <p class="cmd mysql">mysql -u lustra -p</p>
  
-  <p><em>Once you have set everything up, you can create a new database from scratch using MYSQL language only through
-    command line. But this is time consuming, so let's leave it until later, when we are more advanced and
+  <p><em>Once you have set everything up, you can create a new database from scratch using mysql language only through
+    command line. However, this is time consuming, so let's leave it until later, when we are more advanced and
     caring about security. 
     Instead, let us download a GUI called PhpMyAdmin. It provides
     an easy way for us to make and manage our databases.</em><br>
@@ -97,7 +99,7 @@
   <p>During the installation proccess, you will be prompted to choose a web server.
     Since "nginx" is not an option, press Tab and then OK. You will later be prompted to
     create a database. Since we already have our database created and configured,
-    choose a "No" option.
+    choose the "No" option.
   </p>
   <p>6. The installation will now finish. For the Nginx web server to find and serve the phpMyAdmin files correctly, we’ll need to create a symbolic link from the installation files to nginx’s document root directory:</p>
   <p class="cmd">sudo ln -s /usr/share/phpmyadmin /var/www/lustra/phpmyadmin</p>
@@ -105,8 +107,9 @@
     <strong>https://206-12-93-221.cloud.computecanada.ca/phpmyadmin</strong> in your web browser.
   </p>
   <p>Now, there is a whole bunch of security stuff you can add to this, and you can 
-    go ahead and explore your options following <a target="_blank" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-18-04-server">this guide here</a> for that. I will just go ahead and create a basic 
-    database in phpmyadmin. Watch <a target="_blank" href="https://www.youtube.com/watch?v=Yf0WdxhHtxc&list=PLhPyEFL5u-i0XXGLJawaTNLiXxmSp24TR&index=5">this video</a> if you are not sure how to do this.</p>
+    go ahead and explore your options following <a target="_blank" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-with-nginx-on-an-ubuntu-18-04-server">this guide</a> for that.
+     I will just go ahead and create a basic database in phpmyadmin. 
+     Watch <a target="_blank" href="https://www.youtube.com/watch?v=Yf0WdxhHtxc&list=PLhPyEFL5u-i0XXGLJawaTNLiXxmSp24TR&index=5">this video</a> if you are not sure how to do this.</p>
   </p>
     </div>
   </article>
