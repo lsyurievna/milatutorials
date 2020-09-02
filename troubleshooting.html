@@ -36,7 +36,7 @@
       <p><em>80% of my time while building this project was dedicated to troubleshooting. 
         So you should try to get used to it. Reading and 
         understanding command line warnings and error messages can be really frustrating at the beginning.
-        Even reading trough Stack Overflow and other nice computer science forums can be a bit overwhelming if 
+        Even reading through Stack Overflow and other nice computer science forums can be a bit overwhelming if 
         you are a complete beginner. But don't panic. Take your time and patiently work your way through
         the problem. I hope this page will be of some help to you.
       </em></p>
@@ -44,18 +44,18 @@
       <p>1. First, we can check if something is using port 80.</p>
       <p>Login as the root user.</p>
       <p class="cmd">sudo su</p>
-      <p>You can always lift the user privelegies later by typing:</p>        
+      <p>You can always lift the user privilegies later by typing:</p>        
       <p class="cmd">exit</p>
       <p>Now, let's check which programs are listening on port 80.</p>
       <p class="cmd">sudo lsof -i :80</p>
       <p>If there are any, kill them.</p>
       <p class="cmd">sudo fuser -k 80/tcp</p>
-      <p>Note:there is a whole bunch of other methods to check which ports are open
+      <p>Note: there are a bunch of other methods to check which ports are open
         and what programs are using them. Visit 
         <a class="content-link" target="_blank" href="https://www.cyberciti.biz/faq/how-to-check-open-ports-in-linux-using-the-cli/">this page</a>
         for details.
       </p>
-      <p>My personal favourite in listing to all the ports:</p>
+      <p>My personal favourite is:</p>
       <p class="cmd">sudo netstat -tulpn | grep LIST</p>
       <p>If your port is busy with the apache server as in my case, you can disable it by typing:</p>
       <p class="cmd">sudo /etc/init.d/apache2 stop</p>
@@ -76,7 +76,7 @@
       <p>For a more detailed check:</p>
       <p class="cmd">sudo ufw status verbose</p>
       <p>You can try disabling your firewall with <strong>disable</strong>
-        command. Remember to later enable it back again with an <strong>enable</strong> command.</p>
+        command. Remember to later enable it back again with <strong>enable</strong> command.</p>
       <p class="cmd">sudo ufw enable/disable</p>
       <p>4. Check if nginx config file has any problems in it.</p>
       <p class="cmd">sudo nginx -t</p>
